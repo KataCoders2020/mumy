@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/stretchr/testify/assert"
-	_ "github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -25,20 +24,20 @@ func TestIsVowel(t *testing.T) {
 	}
 }
 
-func TestVowelConverter(t *testing.T) {
+func TestCalculatePercentage(t *testing.T) {
 	type args struct {
 		word string
 	}
 	tests := []struct {
 		name string
 		args args
-		expected string
+		expected float64
 	}{
-		{"Devuelve la misma palabra si tiene menos de 30% de vocales", args{"Fred"}, "Fred"},
+		{"Devuelve la misma palabra si tiene menos de 30% de vocales", args{"television"}, 0.5},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T){
-			assert.Equal(t, test.expected, IsVowel(test.args.word))
+			assert.Equal(t, test.expected, CalculatePercentage(test.args.word))
 		})
 	}
 }
