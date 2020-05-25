@@ -33,7 +33,7 @@ func TestCalculatePercentage(t *testing.T) {
 		args args
 		expected float64
 	}{
-		{"Devuelve la misma palabra si tiene menos de 30% de vocales", args{"television"}, 0.5},
+		{"Devuelve el porcentaje de vocales que hay en la palabra", args{"television"}, 0.5},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T){
@@ -41,4 +41,26 @@ func TestCalculatePercentage(t *testing.T) {
 		})
 	}
 }
+
+func TestConvertVowelsToMumy(t *testing.T) {
+	type args struct {
+		word string
+	}
+	tests := []struct {
+		name string
+		args args
+		expected string
+	}{
+		{"Devuelve la misma palabra si tiene menos de 30% de vocales", args{"Fred"}, "Fred"},
+		{"Devuelve la misma palabra reemplazando cada vocal por mumy, si contiene más de 30% de vocales", args{"casa"}, "cmumysmumy"},
+
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T){
+			assert.Equal(t, test.expected, ConvertVowelsToMumy(test.args.word))
+		})
+	}
+}
+
+
 

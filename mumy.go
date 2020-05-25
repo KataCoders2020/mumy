@@ -38,8 +38,23 @@ func CalculatePercentage(word string) float64 {
 			totalVowels++
 		}
 	}
+
 	var percentage float64 = float64(totalVowels) / float64(totalLetters)
 	return percentage
 }
 
+func ConvertVowelsToMumy(word string) string{
+	if CalculatePercentage(word) <= 0.3  {
+		return word
+	}
 
+	var mumyword string = word
+	var letters = strings.Split(mumyword,"")
+	for _, letter := range letters{
+		if IsVowel(letter){
+			strings.Replace(mumyword, letter,"mumy",-1)
+		}
+	}
+
+	return mumyword
+}
