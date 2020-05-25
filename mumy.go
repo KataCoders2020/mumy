@@ -53,7 +53,7 @@ func ConvertVowelsToMumy(word string) string{
 	for _, letter := range letters{
 		if IsVowel(letter){
 			strings.Replace(mumyword, letter,"mumy",-1)
-		}
+		}git
 	}
 
 	return mumyword
